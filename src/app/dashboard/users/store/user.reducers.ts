@@ -18,7 +18,7 @@ export const SetIsLoadingReducer = createReducer(
   on(UserActions.setIsLoading, (_, { status }) => status)
 );
 
-export const reducers: ActionReducerMap<UserState> = {
+export const UserReducer: ActionReducerMap<UserState> = {
   usersList: GetUsersListReducer,
   userDetails: GetUserDetailsReducer,
   isLoading: SetIsLoadingReducer,

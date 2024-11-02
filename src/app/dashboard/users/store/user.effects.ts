@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, concatMap } from 'rxjs/operators';
@@ -8,6 +8,9 @@ import { UserService } from '../../../shared/services/user.service';
 
 @Injectable()
 export class UserEffects {
+  private readonly actions$ = inject(Actions);
+  private readonly userService = inject(UserService);
+
   getUsersList$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.getUsersList),
@@ -31,6 +34,4 @@ export class UserEffects {
       )
     )
   );
-
-  constructor(private actions$: Actions, private userService: UserService) {}
 }

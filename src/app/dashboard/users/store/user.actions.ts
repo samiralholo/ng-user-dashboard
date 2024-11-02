@@ -3,7 +3,7 @@ import { GResult, PaginationResult, User } from '@ng-user-dashboard/models';
 
 const getUsersList = createAction(
   '[User] Get Users List',
-  (pageNumber: number) => ({ pageNumber })
+  (pageNumber: number = 1) => ({ pageNumber })
 );
 
 const getUsersListSuccess = createAction(
