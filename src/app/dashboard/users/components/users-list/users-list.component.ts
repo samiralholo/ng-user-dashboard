@@ -8,14 +8,19 @@ import { UserActions } from '../../store/user.actions';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { AppRoutes } from '@ng-user-dashboard/configs';
+import { FADE_IN } from '@ng-user-dashboard/animation';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
+  animations: [FADE_IN],
 })
 export class UsersListComponent implements OnInit {
   private readonly store = inject(Store);
+  private readonly router = inject(Router);
 
   usersList$ = this.store.select(getUsersList);
   isLoading$ = this.store.select(getIsLoading);
@@ -23,7 +28,6 @@ export class UsersListComponent implements OnInit {
   private userListSource = new BehaviorSubject<User[]>([]);
   userList$ = this.userListSource.asObservable();
 
-  // To keep track of the search input
   private searchValueSource = new BehaviorSubject<string>('');
   filteredUserList$ = combineLatest([
     this.userList$,
@@ -48,6 +52,7 @@ export class UsersListComponent implements OnInit {
     'firstName',
     'lastName',
     'email',
+    'actions',
   ];
   dataSource = new MatTableDataSource<User>();
   searchValue: string = '';
@@ -81,5 +86,14 @@ export class UsersListComponent implements OnInit {
 
   setPage(value: PageEvent) {
     this.store.dispatch(UserActions.getUsersList(value.pageIndex + 1));
+  }
+
+  showDetails(userId: number) {
+    this.router.navigate([
+      AppRoutes.Dashboard,
+      AppRoutes.Users,
+      AppRoutes.UserDetails,
+      userId,
+    ]);
   }
 }
