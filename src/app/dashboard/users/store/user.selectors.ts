@@ -10,7 +10,7 @@ export const getUsersList = createSelector(
 
 export const getUserDetails = createSelector(
   featureSelector,
-  (state) => state.userDetails
+  (state) => state?.userDetails?.data
 );
 
 export const getIsLoading = createSelector(
