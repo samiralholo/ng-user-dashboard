@@ -1,22 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '@ng-user-dashboard/models';
+import { Location } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getIsLoading, getUserDetails } from '../../store/user.selectors';
+import { UserActions } from '../../store/user.actions';
+import { FADE_IN } from '@ng-user-dashboard/animation';
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.scss',
+  animations: [FADE_IN],
 })
 export class UserDetailsComponent implements OnInit {
-  user: User | null = null;
+  private readonly store = inject(Store);
+  private location = inject(Location);
+  private activatedRoute = inject(ActivatedRoute);
+
+  user$: Observable<User> = this.store.select(getUserDetails);
+  isLoading$: Observable<boolean> = this.store.select(getIsLoading);
 
   ngOnInit(): void {
-    this.user = {
-      id: 1,
-      first_name: 'first_name',
-      last_name: 'last_name',
-      email: 'email',
-      avatar:
-        'https://lumiere-a.akamaihd.net/v1/images/a_avatarpandorapedia_neytiri_16x9_1098_01_0e7d844a.jpeg',
-    };
+    const userId = this.activatedRoute.snapshot.params['userId'];
+    this.store.dispatch(UserActions.getUserDetails(Number(userId)));
+  }
+
+  onBackButton() {
+    this.location.back();
   }
 }

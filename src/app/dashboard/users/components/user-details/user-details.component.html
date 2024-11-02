@@ -1,30 +1,50 @@
-<div class="header">
-  <button mat-fab extended class="btn">
-    <mat-icon>arrow_back_ios</mat-icon>
-    Back
-  </button>
-  <h2>Users Details</h2>
-</div>
-<div class="details-container">
-  <div class="avatar">
-    <img [src]="user?.avatar" [alt]="user?.first_name" />
+<div class="page-container" [@fadeIn] class="fade-in-container">
+  <div class="header">
+    <button mat-stroked-button class="back-button" (click)="onBackButton()">
+      <mat-icon>arrow_back_ios</mat-icon>
+      Back
+    </button>
+    <h2 class="header-title">User Details</h2>
   </div>
-  <div class="details">
-    <div class="item">
-      <span class="mat-title-medium">ID:</span>
-      <p class="mat-body-large">{{ user?.id }}</p>
+
+  <ng-container *ngIf="(isLoading$ | async) === false; else isLoadingTemplate">
+    <div class="details-card">
+      <div class="avatar-section">
+        <img
+          [src]="(user$ | async)?.avatar"
+          [alt]="(user$ | async)?.first_name"
+          class="avatar-image"
+        />
+        <h3 class="user-name">
+          {{ (user$ | async)?.first_name }} {{ (user$ | async)?.last_name }}
+        </h3>
+        <p class="user-email">{{ (user$ | async)?.email }}</p>
+      </div>
+      <div class="info-section">
+        <div class="info-item">
+          <span class="label">ID:</span>
+          <span class="value">{{ (user$ | async)?.id }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">First Name:</span>
+          <span class="value">{{ (user$ | async)?.first_name }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Last Name:</span>
+          <span class="value">{{ (user$ | async)?.last_name }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Email:</span>
+          <span class="value">{{ (user$ | async)?.email }}</span>
+        </div>
+      </div>
     </div>
-    <div class="item">
-      <span class="mat-title-medium">First Name:</span>
-      <p class="mat-body-large">{{ user?.first_name }}</p>
-    </div>
-    <div class="item">
-      <span class="mat-title-medium">Last Name:</span>
-      <p class="mat-body-large">{{ user?.last_name }}</p>
-    </div>
-    <div class="item">
-      <span class="mat-title-medium">Email:</span>
-      <p class="mat-body-large">{{ user?.email }}</p>
-    </div>
-  </div>
+  </ng-container>
+
+  <ng-template #isLoadingTemplate>
+    <mat-progress-bar
+      *ngIf="isLoading$ | async"
+      mode="indeterminate"
+    ></mat-progress-bar>
+  </ng-template>
 </div>

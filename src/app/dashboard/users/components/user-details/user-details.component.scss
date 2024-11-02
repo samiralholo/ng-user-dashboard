@@ -1,40 +1,87 @@
 .header {
+  gap: 1rem;
   display: flex;
-  .btn {
+  align-items: center;
+  justify-content: start;
+  padding: 1rem 1.5rem;
+  background-color: #f4f6f8;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+
+  .back-button {
     margin-right: 0.5rem;
     padding: 0 50px;
   }
-}
-.details-container {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  background-color: #ddd;
-  border-radius: 25px;
-  padding: 30px;
-}
 
-.avatar {
-  img {
-    width: 350px;
-    border: 1px solid red;
-    border-radius: 15px;
-    box-shadow: 3px 5px 30px -10px rgba(66, 68, 90, 1);
+  .header-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
   }
 }
 
-.details {
-  width: 100%;
+.details-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: #ffffff;
 
-  .item {
+  .avatar-section {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #007bff;
+    color: #fff;
 
-    span {
-      margin-right: 0.5rem;
+    .avatar-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #fff;
+    }
+
+    .user-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .user-email {
+      font-size: 1rem;
+      color: #e3f2fd;
+    }
+  }
+
+  .info-section {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      border-bottom: 1px solid #eee;
+
+      .label {
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 500;
+      }
+
+      .value {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
     }
   }
 }
