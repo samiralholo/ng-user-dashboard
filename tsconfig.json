@@ -30,6 +30,9 @@
       "@ng-user-dashboard/models": [
         "./src/app/shared/models/index.ts"
       ],
+      "@ng-user-dashboard/animation": [
+        "./src/app/shared/animations/index.ts"
+      ],
     }
   },
   "angularCompilerOptions": {
