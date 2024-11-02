@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '@ng-user-dashboard/models';
 
 @Component({
@@ -8,4 +8,9 @@ import { User } from '@ng-user-dashboard/models';
 })
 export class UserCardComponent {
   @Input() user!: User;
+  @Output() onShowDetails = new EventEmitter<void>();
+
+  onClick() {
+    this.onShowDetails.emit();
+  }
 }
