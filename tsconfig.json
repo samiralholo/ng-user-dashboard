@@ -27,6 +27,9 @@
       "@ng-user-dashboard/configs": [
         "./src/app/configs/index.ts"
       ],
+      "@ng-user-dashboard/models": [
+        "./src/app/shared/models/index.ts"
+      ],
     }
   },
   "angularCompilerOptions": {
