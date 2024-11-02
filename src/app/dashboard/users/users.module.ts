@@ -10,6 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { USER_STATE } from './store/user.state';
+import { UserReducer } from './store/user.reducers';
+import { UserEffects } from './store/user.effects';
 @NgModule({
   declarations: [UsersListComponent, UserDetailsComponent],
   imports: [
@@ -22,6 +28,9 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressBarModule,
+    StoreModule.forFeature(USER_STATE, UserReducer),
+    EffectsModule.forFeature([UserEffects]),
   ],
 })
 export class UsersModule {}
