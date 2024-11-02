@@ -17,6 +17,11 @@
   &__nav {
     display: flex;
     align-items: center;
+
+    .active {
+      background-color: var(--mat-full-pseudo-checkbox-selected-icon-color);
+      color: white;
+    }
   }
 }
 
