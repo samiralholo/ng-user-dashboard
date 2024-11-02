@@ -9,6 +9,11 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
+        path: '',
+        redirectTo: AppRoutes.Users,
+        pathMatch: 'full',
+      },
+      {
         path: AppRoutes.Users,
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
