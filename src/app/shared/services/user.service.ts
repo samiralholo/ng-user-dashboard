@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GResult, PaginationResult, User } from '../models';
+import { GResult, PaginationResult, User } from '@ng-user-dashboard/models';
 import { lastValueFrom } from 'rxjs';
 import { BASE_API } from '@ng-user-dashboard/configs';
 
