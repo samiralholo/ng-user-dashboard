@@ -7,11 +7,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { provideHttpClient } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
