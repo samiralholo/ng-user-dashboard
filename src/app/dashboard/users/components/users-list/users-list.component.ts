@@ -3,8 +3,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '@ng-user-dashboard/models';
 import { Store } from '@ngrx/store';
-import { getIsLoading, getUsersList } from '../store/user.selectors';
-import { UserActions } from '../store/user.actions';
+import { getIsLoading, getUsersList } from '../../store/user.selectors';
+import { UserActions } from '../../store/user.actions';
 
 @Component({
   selector: 'app-users-list',
