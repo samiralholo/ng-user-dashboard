@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  .btn {
+    margin-right: 0.5rem;
+    padding: 0 50px;
+  }
+}
+.details-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background-color: #ddd;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.avatar {
+  img {
+    width: 350px;
+    border: 1px solid red;
+    border-radius: 15px;
+    box-shadow: 3px 5px 30px -10px rgba(66, 68, 90, 1);
+  }
+}
+
+.details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .item {
+    display: flex;
+
+    span {
+      margin-right: 0.5rem;
+    }
+  }
+}
