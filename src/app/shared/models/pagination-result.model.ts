@@ -1,6 +1,8 @@
-import { GResult } from './result.model';
+import { Support } from './result.model';
 
-export interface PaginationResult<T> extends GResult<T> {
+export interface PaginationResult<T> {
+  data: T[];
+  support: Support;
   page: number;
   per_page: number;
   total: number;

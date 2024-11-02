@@ -1,5 +1,5 @@
 export interface GResult<T> {
-  data: T[];
+  data: T;
   support: Support;
 }
 
